@@ -389,3 +389,33 @@ class SafePathfinder:
                 f"at ({detail['centroid_x']:.1f}, {detail['centroid_y']:.1f})"
             )
         return "\n".join(lines)
+
+
+# ---------------------------------------------------------------------------
+# Module-level standalone routing function
+# ---------------------------------------------------------------------------
+
+def dijkstra_safest_path(
+    graph_state: nx.Graph,
+    start_node: str,
+    exit_node: str,
+) -> Optional[Dict[str, Any]]:
+    """Callable pathfinding function using `networkx.dijkstra_path`.
+
+    Takes `(graph_state, start_node, exit_node)` and calculates the path
+    minimizing dynamic weights.
+
+    Args:
+        graph_state: The NetworkX graph carrying dynamic hazard edge weights.
+        start_node: The starting room / occupant location.
+        exit_node: The target safe exit node.
+
+    Returns:
+        dict:
+            - "path": List of node IDs, e.g. ["Room_12", "Door_4", "Corridor_A", "Exit_0"]
+            - "cost": Total path cost (weighted traversal distance)
+            - "safety_margin": Minimum distance to any active hazard
+            - "path_details": Detailed node metadata sequence
+    """
+    pathfinder = SafePathfinder(graph_state)
+    return pathfinder.find_safest_route(start_node, exit_node)

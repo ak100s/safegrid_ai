@@ -12,7 +12,7 @@ BENCHMARK_RESULTS_DIR = os.path.join(PROJECT_ROOT, "benchmarks", "results")
 # Navigable space categories we extract from SVG
 NAVIGABLE_SPACE_CLASSES = [
     "Room", "LivingRoom", "Bedroom", "Kitchen", "Dining",
-    "Corridor", "Hallway", "Entrance",
+    "Corridor", "Hallway", "Entrance", "Stairs", "Stair",
     "Bath", "Shower", "Toilet",
     "Closet", "WalkIn", "Storage",
     "Sauna", "Garage", "Balcony", "Terrace",

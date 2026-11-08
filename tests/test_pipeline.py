@@ -25,7 +25,7 @@ import config
 from src.graph_builder import FloorPlanGraph, GraphBuilder
 from src.hazard_engine import HazardEngine
 from src.llm_agent import EvacuationAgent, PureLLMBaseline
-from src.pathfinder import SafePathfinder
+from src.pathfinder import SafePathfinder, dijkstra_safest_path
 from src.svg_parser import CubiCasaSVGParser, SVGFloorPlanParser
 
 
@@ -120,6 +120,13 @@ class TestHazardEngine(unittest.TestCase):
         self.assertTrue(removed)
         self.assertEqual(len(self.engine.get_hazards()), 0)
 
+    def test_add_hazard_at_node(self):
+        first_node = list(self.graph.nodes())[0]
+        h_id = self.engine.add_hazard_at_node(first_node, radius=120.0, hazard_type="fire")
+        self.assertIsNotNone(h_id)
+        self.assertEqual(len(self.engine.get_hazards()), 1)
+        self.engine.clear_hazards()
+
     def test_weight_penalization(self):
         # Pick an edge midpoint
         edge = list(self.graph.edges())[0]
@@ -179,6 +186,15 @@ class TestSafePathfinder(unittest.TestCase):
         self.assertIn("cost", route)
         self.assertEqual(route["path"][0], rooms[0])
         self.assertEqual(route["path"][-1], exits[0])
+
+    def test_dijkstra_safest_path_function(self):
+        rooms = [n for n, d in self.graph.nodes(data=True) if d.get("node_type") == "room"]
+        exits = [n for n, d in self.graph.nodes(data=True) if d.get("is_exit", False)]
+        route = dijkstra_safest_path(self.graph, rooms[0], exits[0])
+        self.assertIsNotNone(route)
+        self.assertIn("path", route)
+        self.assertIn("cost", route)
+        self.assertEqual(route["path"][0], rooms[0])
 
     def test_path_validity_check(self):
         rooms = [n for n, d in self.graph.nodes(data=True) if d.get("node_type") == "room"]

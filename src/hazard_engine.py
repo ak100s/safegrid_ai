@@ -160,6 +160,29 @@ class HazardEngine:
         self.update_weights()
         return hazard_id
 
+    def add_hazard_at_node(
+        self,
+        node_id: str,
+        radius: float = config.DEFAULT_HAZARD_RADIUS,
+        hazard_type: str = "fire",
+        severity: float = 1.0,
+    ) -> str:
+        """Inject a synthetic hazard centered directly at a specific graph node.
+
+        Example:
+            >>> engine.add_hazard_at_node("Room_15", radius=150.0, hazard_type="fire")
+        """
+        if node_id not in self._graph:
+            raise KeyError(f"Node '{node_id}' does not exist in graph.")
+        cx, cy = self._node_centroid(node_id)
+        return self.add_hazard(
+            x=cx,
+            y=cy,
+            radius=radius,
+            hazard_type=hazard_type,
+            severity=severity,
+        )
+
     def remove_hazard(self, hazard_id: str) -> bool:
         """Remove a hazard by its ID and recalculate weights.
 
