@@ -1,0 +1,4 @@
+Category,Total SVGs,Successfully Parsed,Avg Nodes/Graph,Avg Edges/Graph,Avg Parse Time (s),Avg Graph Build Time (s)
+colorful,276,261,6.3,7.8,0.042,0.013
+high_quality,992,963,8.1,10.4,0.038,0.016
+high_quality_architectural,3732,3654,11.7,16.2,0.051,0.024

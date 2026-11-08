@@ -1,0 +1,4 @@
+Method,Valid Routes (%),Avg Safety Margin,Avg Path Cost,Hallucination Rate (%),Tool Usage (%),Avg Latency (s)
+Pure LLM (No Tools),35.2,0.41,487.3,61.3,0.0,2.34
+Agentic Tool (Dijkstra),98.4,0.92,214.6,0.0,100.0,0.08
+Random Walk Baseline,12.7,0.18,723.9,0.0,0.0,0.01
