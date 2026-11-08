@@ -225,7 +225,6 @@ safegrid_ai/
 - **CubiCasa5k Dataset**: Kalervo et al., *"CubiCasa5k: A Dataset for Architectural Floor Plan Analysis and Generation"*, [arXiv:1904.01920](https://arxiv.org/abs/1904.01920)
 - **CubiGraph5K**: [GitHub Repository](https://github.com/luyueheng/CubiGraph5K)
 - **NetworkX**: Hagberg, Swart, Chult, *"Exploring Network Structure, Dynamics, and Function using NetworkX"*
-- **Google Generative AI**: [Gemini API Documentation](https://ai.google.dev/)
 
 ---
 
