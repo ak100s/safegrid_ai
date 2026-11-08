@@ -271,7 +271,11 @@ class HazardEngine:
             blocked = False
 
             for hazard in self._hazards.values():
-                dist = self._euclidean(midpoint, hazard.center)
+                dist = min(
+                    self._euclidean(midpoint, hazard.center),
+                    self._euclidean(cu, hazard.center),
+                    self._euclidean(cv, hazard.center),
+                )
 
                 if dist < hazard.danger_zone_radius:
                     # Inside the inner danger zone → impassable
