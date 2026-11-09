@@ -24,10 +24,7 @@ import networkx as nx
 import numpy as np
 from shapely.geometry import Point, Polygon
 
-try:
-    from safegrid_ai import config
-except ImportError:
-    import config
+import config
 
 logger = logging.getLogger(__name__)
 
