@@ -5,7 +5,6 @@
 [![Python 3.10+](https://img.shields.io/badge/python-3.10+-blue.svg)](https://www.python.org/downloads/)
 [![License: MIT](https://img.shields.io/badge/License-MIT-green.svg)](https://opensource.org/licenses/MIT)
 [![NetworkX](https://img.shields.io/badge/NetworkX-3.4-orange.svg)](https://networkx.org/)
-[![Gemini](https://img.shields.io/badge/LLM-Gemini%202.0%20Flash-blueviolet.svg)](https://ai.google.dev/)
 
 ---
 
