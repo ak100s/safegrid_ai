@@ -458,7 +458,7 @@ def generate_llm_instructions(route_result, hazard_info):
         return response.text
 
     except Exception as e:
-        print(f"  ⚠ LLM call failed: {e}")
+        print("  [INFO] Cloud LLM unavailable -- using offline instruction synthesizer.")
         return _fallback_instructions(route_result, hazard_info)
 
 
